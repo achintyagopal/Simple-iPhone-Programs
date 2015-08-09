@@ -158,56 +158,6 @@ int a;
     self.query = string;
 }
 
--(void)createQueryWithNumber: (NSInteger)i
-                     inField: (NSString *)field {
-    /*
-     NSString *escName = @"";
-     NSArray *result = [self getFromCollection:field];
-     if(result.count == 0) {
-     if(self.delegate){
-     [self.delegate viewUpdated];
-     }
-     return;
-     }
-     else{
-     NSDictionary *dictionary = result[0];
-     BOGODeal *deal = [[BOGODeal alloc]initWithDictionary:dictionary];
-     [self.objects addObject:deal];
-     NSArray *query = [self coordinateToArray:deal.coordinate];
-     NSString *nameQuery = [NSString stringWithFormat:@"{\"$neq\":\"%@\"}", query];
-     NSString *userInQuery = [NSString stringWithFormat:@"{\"coordinate\":%@}", nameQuery];
-     escName = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL,(CFStringRef) userInQuery,NULL,(CFStringRef) @"!*();':@&=+$,/?%#[]{}",kCFStringEncodingUTF8));
-     }
-     
-     NSMutableString *tempQuery = [[NSMutableString alloc]initWithString: _query];
-     if(i == 0){
-     
-     NSRange range = NSMakeRange(0, 6);
-     [tempQuery deleteCharactersInRange:range];
-     
-     NSString *combineQuery = [NSString stringWithFormat:@"%@,%@",tempQuery,escName];
-     NSString *andQuery = [NSString stringWithFormat:@"{\"$and\":[%@]}", combineQuery];
-     andQuery = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL,(CFStringRef) andQuery,NULL,(CFStringRef) @"!*();':@&=+$,/?%#[]{}",kCFStringEncodingUTF8));
-     _query = [NSString stringWithFormat:@"?query=%@",andQuery];
-     return [self createQueryWithNumber:1 inField:field];
-     }
-     
-     NSRange range = NSMakeRange(tempQuery.length-4, 4);
-     [tempQuery deleteCharactersInRange:range];
-     NSString *combineQuery = [NSString stringWithFormat:@"%@,%@", tempQuery, escName];
-     
-     //}}]}
-     NSString *appendString = @"}}]}";
-     appendString =(NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL,(CFStringRef) appendString,NULL,(CFStringRef) @"!*();':@&=+$,/?%#[]{}",kCFStringEncodingUTF8));
-     tempQuery = [[NSMutableString alloc]initWithString: combineQuery];
-     [tempQuery appendString:appendString];
-     _query = tempQuery;
-     return [self createQueryWithNumber:i inField:field];
-     
-     */
-    
-}
-
 /***************GET***********/
 
 -(void)getFromCollection:(NSString *)kField {
@@ -227,7 +177,6 @@ int a;
             NSLog(@"Complete");
             responseArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
             
-            //self.objects = [[self.objects arrayByAddingObjectsFromArray:responseArray]mutableCopy];
             self.objects = [responseArray mutableCopy];
             NSLog(@"count %ld", responseArray.count);
             NSLog(@"%@", self.objects);
@@ -355,36 +304,4 @@ int a;
     
     [dataTask resume];
 }
-
--(void)connection:(NSURLConnection *)connection
- didFailWithError:(NSError *)error{
-    
-    if (error.code == NSURLErrorTimedOut){
-        if(a == 0){
-            a = 1;
-            dispatch_async(dispatch_get_main_queue(), ^{
-                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Error" message:@"Connection Time Out" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                [alert show];
-            });
-        }
-        [connection cancel];
-    }
-    else{
-        if(a == 0){
-            a = 1;
-            dispatch_async(dispatch_get_main_queue(), ^{
-                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Error" message:@"Error" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                [alert show];
-            });
-        }
-        [connection cancel];
-    }
-    a = 1;
-}
-
--(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    
-    a = 0;
-}
-
 @end

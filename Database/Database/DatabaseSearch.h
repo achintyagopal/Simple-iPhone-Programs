@@ -15,7 +15,7 @@
 
 @end
 
-@interface DatabaseSearch : NSObject <NSURLConnectionDelegate, UIAlertViewDelegate>
+@interface DatabaseSearch : NSObject
 
 @property(nonatomic, copy)NSString *query;
 @property(nonatomic, retain) NSMutableArray *objects;
