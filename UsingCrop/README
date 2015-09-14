@@ -1,0 +1,3 @@
+UsingCrop
+
+This project shows how to either choose photos from photo library or take a picture. Then, you can draw a rectangle which is the cropped shape. It can easily be copied into your project by copying Square, and the choose photos and draw code from ViewController. 

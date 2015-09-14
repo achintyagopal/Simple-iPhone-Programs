@@ -19,7 +19,9 @@
     // Do any additional setup after loading the view, typically from a nib.
     G8RecognitionOperation *operation = [[G8RecognitionOperation alloc]initWithLanguage:@"eng"];
     operation.tesseract.charWhitelist = @"0123456789+=";
-    operation.tesseract.image = [[UIImage imageNamed:@"math2.jpg"]g8_blackAndWhite];
+    
+    //add photo here
+    operation.tesseract.image = [[UIImage imageNamed:@"Tesseract.png"]g8_blackAndWhite];
     operation.recognitionCompleteBlock = ^(G8Tesseract *recognizedTesseract){
         NSLog(@"%@",[recognizedTesseract recognizedText]);
         NSString *input = [NSString stringWithFormat:@"%@",[recognizedTesseract recognizedText]];
