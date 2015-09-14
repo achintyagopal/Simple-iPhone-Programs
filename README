@@ -1,1 +1,3 @@
-This folder contains many folders which have basic programs for the iPhone. The purpose of this folder is so that larger programs are simpler to build.
+Simple iPhone Programs
+
+This folder contains many folders which have basic programs for the XCode in Objective C. The purpose of this folder is to have a starting point for larger projects. Each project can be used by copying the specific method you need. Explanation of best use of each project is in the README file of each project.
