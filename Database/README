@@ -1,1 +1,9 @@
-To use the database search code, all one has to do is go main.m file and change what kBaseUrl equals.
+UsingDatabase
+
+DatabaseSearch object
+
+To use the database search code, all one has to do is go main.m file and change what kBaseUrl equals. Then you copy the DatabaseSearch.h and DatabaseSearch.m files into your project. You can create an object of type DatabaseSearch and call the methods pertaining to what you need.
+
+DatabaseSearchDelegate
+
+By setting the DatabaseSearch delegate to this delegate, you need to define viewUpdated and errorUpdated. viewUpdated is called whenever a method is done getting the information you requested. errorUpdated is called whenever there was an error with connecting with the server. 
